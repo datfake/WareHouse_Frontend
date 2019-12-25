@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="wareHouseApp.orderInfo.home.title">Order Infos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-order-info" [routerLink]="['/order-info/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="wareHouseApp.orderInfo.home.createLabel">
+            Create a new Order Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="orderInfos?.length === 0">
+        <span jhiTranslate="wareHouseApp.orderInfo.home.notFound">No orderInfos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="orderInfos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="wareHouseApp.orderInfo.amount">Amount</span></th>
+            <th scope="col" ><span jhiTranslate="wareHouseApp.orderInfo.orderDate">Order Date</span></th>
+            <th scope="col" ><span jhiTranslate="wareHouseApp.orderInfo.customer">Customer</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let orderInfo of orderInfos ;trackBy: trackId">
+                <td><a [routerLink]="['/order-info', orderInfo.id, 'view' ]">{{orderInfo.id}}</a></td>
+                <td>{{orderInfo.amount}}</td>
+                <td>{{orderInfo.orderDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="orderInfo.customer">
+                        <a [routerLink]="['/customer', orderInfo.customer?.id, 'view' ]" >{{orderInfo.customer?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/order-info', orderInfo.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/order-info', orderInfo.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(orderInfo)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "wareHouseApp": {
+    "orderDetailInfo": {
+      "home": {
+        "title": "Order Detail Infos",
+        "createLabel": "Create a new Order Detail Info",
+        "createOrEditLabel": "Create or edit a Order Detail Info",
+        "notFound": "No Order Detail Infos found"
+      },
+      "created": "A new Order Detail Info is created with identifier {{ param }}",
+      "updated": "A Order Detail Info is updated with identifier {{ param }}",
+      "deleted": "A Order Detail Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Order Detail Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Order Detail Info"
+      },
+      "quantityOrder": "Quantity Order",
+      "price": "Price",
+      "orderDate": "Order Date",
+      "amount": "Amount",
+      "orderInfo": "Order Info",
+      "product": "Product"
+    }
+  }
+}

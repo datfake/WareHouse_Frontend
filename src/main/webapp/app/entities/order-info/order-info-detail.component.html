@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="orderInfo">
+            <h2><span jhiTranslate="wareHouseApp.orderInfo.detail.title">Order Info</span> {{orderInfo.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="wareHouseApp.orderInfo.amount">Amount</span></dt>
+                <dd>
+                    <span>{{orderInfo.amount}}</span>
+                </dd>
+                <dt><span jhiTranslate="wareHouseApp.orderInfo.orderDate">Order Date</span></dt>
+                <dd>
+                    <span>{{orderInfo.orderDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="wareHouseApp.orderInfo.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="orderInfo.customer">
+                        <a [routerLink]="['/customer', orderInfo.customer?.id, 'view']">{{orderInfo.customer?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/order-info', orderInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

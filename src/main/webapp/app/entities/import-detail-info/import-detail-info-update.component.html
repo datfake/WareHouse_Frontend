@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-import-detail-info-heading" jhiTranslate="wareHouseApp.importDetailInfo.home.createOrEditLabel">Create or edit a Import Detail Info</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wareHouseApp.importDetailInfo.quantityImport" for="field_quantityImport">Quantity Import</label>
+                    <input type="number" class="form-control" name="quantityImport" id="field_quantityImport"
+                           formControlName="quantityImport"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wareHouseApp.importDetailInfo.importDate" for="field_importDate">Import Date</label>
+                    <div class="input-group">
+                        <input id="field_importDate" type="text" class="form-control" name="importDate" ngbDatepicker  #importDateDp="ngbDatepicker" formControlName="importDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="importDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wareHouseApp.importDetailInfo.price" for="field_price">Price</label>
+                    <input type="number" class="form-control" name="price" id="field_price"
+                           formControlName="price"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wareHouseApp.importDetailInfo.importInfo" for="field_importInfo">Import Info</label>
+                    <select class="form-control" id="field_importInfo" name="importInfo" formControlName="importInfo">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="importInfoOption.id === editForm.get('importInfo').value?.id ? editForm.get('importInfo').value : importInfoOption" *ngFor="let importInfoOption of importinfos; trackBy: trackImportInfoById">{{importInfoOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="wareHouseApp.importDetailInfo.product" for="field_product">Product</label>
+                    <select class="form-control" id="field_product" name="product" formControlName="product">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productOption.id === editForm.get('product').value?.id ? editForm.get('product').value : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

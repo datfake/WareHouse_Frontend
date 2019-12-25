@@ -1,0 +1,26 @@
+{
+  "wareHouseApp": {
+    "importDetailInfo": {
+      "home": {
+        "title": "Import Detail Infos",
+        "createLabel": "Create a new Import Detail Info",
+        "createOrEditLabel": "Create or edit a Import Detail Info",
+        "notFound": "No Import Detail Infos found"
+      },
+      "created": "A new Import Detail Info is created with identifier {{ param }}",
+      "updated": "A Import Detail Info is updated with identifier {{ param }}",
+      "deleted": "A Import Detail Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Import Detail Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Import Detail Info"
+      },
+      "quantityImport": "Quantity Import",
+      "importDate": "Import Date",
+      "price": "Price",
+      "importInfo": "Import Info",
+      "product": "Product"
+    }
+  }
+}

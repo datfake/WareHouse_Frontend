@@ -1,0 +1,41 @@
+{
+    "name": "ImportDetailInfo",
+    "fields": [
+        {
+            "fieldName": "quantityImport",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "importDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "importInfo",
+            "otherEntityRelationshipName": "importDetailInfo"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "importDetailInfo",
+            "relationshipName": "product",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191225030042",
+    "entityTableName": "import_detail_info",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
